@@ -1,4 +1,7 @@
 <template>
+  <b-container-fluid>
+    <h1>Bienvenue dans votre réseau Groupomania !</h1>
+
     <div>
         <b-btn variant="success">S'inscrire</b-btn>
         <b-btn variant="success">Se connecter</b-btn>
@@ -35,11 +38,12 @@
         </b-row>
     </div>
 
+  </b-container-fluid>
 </template>
 
 <script>
 export default {
-    name: 'WelcomePage'
+  name: 'Actus'
 }
 </script>
 
