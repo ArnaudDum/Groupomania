@@ -15,7 +15,7 @@ const routes = [
   },
   {
     path: '/Actualités',
-    name: 'fil d\'actualités',
+    name: 'Fil d\'actualités',
     component: Actus
   },
   {
