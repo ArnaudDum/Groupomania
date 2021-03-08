@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <b-nav id="nav">
-      <router-link class="nav-item" to="/">Accueil</router-link>
-      <router-link class="nav-item" to="/Actualités">Fil d'actualités</router-link>
-      <router-link class="nav-item" to="/Profil">Mon profil</router-link>
+    <b-nav id="nav" class="navbar navbar-expand bg-dark navbar-dark">
+      <a class="navbar-brand" href="/"><img height="150" width="auto" src="./assets/logos/icon-left-font-monochrome-white.png" alt="Logo Groupomania"/></a>
+      <router-link class="nav-item" to="/">Accueil</router-link> |
+      <router-link class="nav-item" to="/Actualités">Fil d'actualités</router-link> |
+      <router-link class="nav-item" to="/Profil">Mon profil</router-link> |
       <router-link class="nav-item" to="/APropos">A propos</router-link>
     </b-nav>
     <router-view/>
@@ -11,5 +12,8 @@
 </template>
 
 <style lang="scss">
-
+.navbar {
+  height: 80px;
+  justify-content: space-around;
+}
 </style>

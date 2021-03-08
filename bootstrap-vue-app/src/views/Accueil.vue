@@ -1,10 +1,10 @@
 <template>
-  <b-container-fluid>
+  <b-container>
     <h1>Bienvenue dans votre réseau Groupomania !</h1>
 
     <Welcome/>
 
-  </b-container-fluid>
+  </b-container>
 </template>
 
 <script>
