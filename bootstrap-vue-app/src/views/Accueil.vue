@@ -1,6 +1,5 @@
 <template>
-  <b-container>
-    <h1>Bienvenue dans votre réseau Groupomania !</h1>
+  <b-container fluid>
 
     <Welcome/>
 
