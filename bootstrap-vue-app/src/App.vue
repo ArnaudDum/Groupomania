@@ -21,13 +21,14 @@
   .navbar {
     height: 80px;
     justify-content: space-around;
-    background: #1B2D4A;
+    background-color: #1B2D4A;
+    transition: background-color 400ms;
     .nav-item {
       text-decoration: none;
       color: white;
     }
     &:hover {
-      background: #C15960;
+      background-color: #C15960;
       .nav-item {
         color: white;
         &:hover {

@@ -6,7 +6,7 @@
         </b-col>
         <b-col id="col-2" class="col-12 col-md-6">
 
-                <b-card title="Inscription" class="form-card shadow-lg h-75">
+                <b-card id="signup-form" title="Inscription" class="form-card shadow-lg h-75">
                   <b-card-body>
                     <b-form class="forms">
                       <b-form-group label="Votre nom">
@@ -23,7 +23,7 @@
                   </b-card-body>
                 </b-card>
 
-                <b-card title="Connexion" class="form-card shadow-lg h-75">
+                <b-card id="login-form" title="Connexion" class="form-card shadow-lg h-75">
                   <b-card-body>
                     <b-form class="forms">
                       <b-form-group label="Votre email">
@@ -32,7 +32,7 @@
                       <b-form-group label="Votre mot de passe">
                         <b-form-input></b-form-input>
                       </b-form-group>
-                      <b-btn type="submit">Connexion</b-btn>
+                      <b-btn class="px-auto" type="submit">Connexion</b-btn>
                     </b-form>
                   </b-card-body>
                 </b-card>
@@ -72,10 +72,31 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    #signup-form {
+      background: #1B2D4A;
+      color: white;
+      &:hover, &:focus {
+        background-color: #C15960;
+        border: solid 5px #1B2D4A;
+      }
+    }
+    #login-form {
+      background: #1B2D4A;
+      color: white;
+      &:hover, &:focus {
+        background-color: #8494A4;
+        border: solid 5px #1B2D4A;
+      }
+    }
     .form-card {
       border: solid 5px #8494A4;
+      transform: scale(1);
+      transition: transform 500ms;
       .forms {
         height: 100%;
+      }
+      &:hover, &:focus {
+        transform: scale(1.02);
       }
     }
   }
