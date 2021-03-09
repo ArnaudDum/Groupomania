@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <b-nav id="nav" class="navbar navbar-expand">
-      <a class="navbar-brand" href="/"><img height="150" width="auto" src="./assets/logos/icon-left-font-monochrome-white.png" alt="Logo Groupomania"/></a>
-      <router-link class="nav-item" to="/Actualités">Fil d'actualités</router-link> |
-      <router-link class="nav-item" to="/Profil">Mon profil</router-link> |
-      <router-link class="nav-item" to="/APropos">A propos</router-link>
+      <a class="navbar-brand w-25" href="/"><img height="150" width="auto" src="./assets/logos/icon-left-font-monochrome-white.png" alt="Logo Groupomania"/></a>
+      <router-link class="nav-item h-md-100 w-md-25" to="/Actualités">Fil d'actualités</router-link> |
+      <router-link class="nav-item h-md-100 w-md-25" to="/Profil">Mon profil</router-link> |
+      <router-link class="nav-item h-md-100 w-md-25" to="/APropos">A propos</router-link>
     </b-nav>
     <router-view/>
   </div>
@@ -25,6 +25,15 @@
     .nav-item {
       text-decoration: none;
       color: white;
+    }
+    &:hover {
+      background: #C15960;
+      .nav-item {
+        color: white;
+        &:hover {
+          font-weight: bold;
+        }
+      }
     }
   }
 }
