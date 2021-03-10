@@ -91,7 +91,7 @@ export default {
     .form-card {
       border: solid 5px #8494A4;
       transform: scale(1);
-      transition: transform 500ms;
+      transition: transform 500ms ease-in-out;
       .forms {
         height: 100%;
       }
