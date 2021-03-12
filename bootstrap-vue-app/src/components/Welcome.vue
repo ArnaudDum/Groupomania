@@ -9,13 +9,22 @@
                 <b-card id="signup-form" title="Inscription" class="form-card shadow-lg h-75">
                   <b-card-body>
                     <b-form class="forms">
-                      <b-form-group label="Votre nom">
+                      <b-form-group class="form-group">
+                        <div>
+                          <span><i class="fas fa-user"></i></span>
+                        </div>
                         <b-form-input></b-form-input>
                       </b-form-group>
-                      <b-form-group label="Votre email">
+                      <b-form-group class="form-group">
+                        <div>
+                          <span><i class="fas fa-at"></i></span>
+                        </div>
                         <b-form-input></b-form-input>
                       </b-form-group>
-                      <b-form-group label="Votre mot de passe">
+                      <b-form-group class="form-group">
+                        <div>
+                          <span><i class="fas fa-key"></i></span>
+                        </div>
                         <b-form-input></b-form-input>
                       </b-form-group>
                       <b-btn type="submit">S'inscrire</b-btn>
@@ -26,10 +35,16 @@
                 <b-card id="login-form" title="Connexion" class="form-card shadow-lg h-75">
                   <b-card-body>
                     <b-form class="forms">
-                      <b-form-group label="Votre email">
+                      <b-form-group class="form-group">
+                        <div>
+                          <span><i class="fas fa-at"></i></span>
+                        </div>
                         <b-form-input></b-form-input>
                       </b-form-group>
-                      <b-form-group label="Votre mot de passe">
+                      <b-form-group class="form-group">
+                        <div>
+                          <span><i class="fas fa-key"></i></span>
+                        </div>
                         <b-form-input></b-form-input>
                       </b-form-group>
                       <b-btn class="px-auto" type="submit">Connexion</b-btn>
