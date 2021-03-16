@@ -2,12 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const app = express();
+const mysql = require('mysql');
 
 const postRoutes = require('./routes/postRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 
+//const connectToDB = mysql.createConnection({
+//    host: 'localhost',
+//    user: 'dumar',
+//    password: 'High210jump--))'
+//});
 
-// CONNECT DB
+//connectToDB.connect();
+
+//connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+//    if (err) throw err;
+//    console.log('The solution is: ', rows[0].solution);
+//});
 
 
 app.use(helmet());
@@ -16,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-// app.use(' /api/posts ', Routes);
-// app.use(' /api/users ', UserRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
 
 
 module.exports = app;
