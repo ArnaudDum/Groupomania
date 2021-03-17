@@ -1,18 +1,18 @@
 <template>
-  <b-container-fluid>
-      <h1>Voici les dernières actualités</h1>
+  <b-container fluid>
+      
+      <Nav/>
 
-      <b-row>
-      <!-- AJOUTER LISTE ACTUS SOUS FORME DE CARTES -->
-      </b-row>
-
-  </b-container-fluid>
+  </b-container>
 </template>
 
 <script>
-
+import Nav from '../components/Nav.vue'
 export default {
-    name: 'Actus'
+    name: 'Actus',
+    components: {
+      Nav
+    }
 }
 </script>
 

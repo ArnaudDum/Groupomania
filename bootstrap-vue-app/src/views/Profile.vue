@@ -1,13 +1,20 @@
 <template>
-  <b-container-fluid>
-      <h1>Mon profil</h1>
+  <b-container fluid>
 
-  </b-container-fluid>
+    <Nav/>
+
+      
+
+  </b-container>
 </template>
 
 <script>
+import Nav from '../components/Nav.vue'
 export default {
-    name: 'Profile'
+    name: 'Profile',
+    components: {
+      Nav
+    }
 }
 </script>
 

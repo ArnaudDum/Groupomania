@@ -1,19 +1,19 @@
 <template>
   <b-container fluid>
 
-    <Welcome/>
+      <Nav/>
 
+      
   </b-container>
 </template>
 
 <script>
-import Welcome from '../components/Welcome.vue'
-
+import Nav from '../components/Nav.vue'
 export default {
-  name: 'Actus',
-  components: {
-    Welcome
-  }
+    name: 'Post',
+    components: {
+      Nav
+    }
 }
 </script>
 

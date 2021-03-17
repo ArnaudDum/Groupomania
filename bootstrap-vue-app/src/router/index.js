@@ -1,32 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Accueil from '../views/Accueil.vue'
 import Actus from '../views/Actus.vue'
 import Profile from '../views/Profile.vue'
-import About from '../views/About.vue'
+import Post from '../views/Post.vue'
+import Welcome from '../views/Welcome.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Accueil',
-    component: Accueil
+    name: 'Welcome',
+    component: Welcome
   },
   {
-    path: '/Actualités',
-    name: 'Fil d\'actualités',
+    path: '/actualités',
+    name: 'Actualités',
     component: Actus
   },
   {
-    path: '/Profil',
+    path: '/profil',
     name: 'Mon profil',
     component: Profile
   },
   {
-    path: '/APropos',
-    name: 'A propos',
-    component: About
+    path: '/publier-un-article',
+    name: 'Publier',
+    component: Post
   }
 ]
 
