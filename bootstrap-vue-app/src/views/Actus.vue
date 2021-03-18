@@ -9,19 +9,23 @@
           <p class="mt-3">Vous pouvez réagir et commenter les publications de vos collègues</p>
         </b-col>
         <b-col id="col2" class="col-12 col-md-10 h-100">
-          
+
         </b-col>
       </div>
+
+      <Footer/>
 
   </b-container>
 </template>
 
 <script>
 import Nav from '../components/Nav.vue'
+import Footer from '../components/Footer.vue'
 export default {
     name: 'Actus',
     components: {
-      Nav
+      Nav,
+      Footer
     }
 }
 </script>
@@ -29,7 +33,6 @@ export default {
 <style lang="scss">
 #col1 {
   color: white;
-  position: fixed;
   background: #1B2D4A;
 }
 </style>

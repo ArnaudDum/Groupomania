@@ -32,15 +32,19 @@
       </b-col>
     </div>
 
+    <Footer/>
+
   </b-container>
 </template>
 
 <script>
 import Nav from '../components/Nav.vue'
+import Footer from '../components/Footer.vue'
 export default {
     name: 'Profile',
     components: {
-      Nav
+      Nav,
+      Footer
     }
 }
 </script>
