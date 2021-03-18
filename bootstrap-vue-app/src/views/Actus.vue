@@ -10,6 +10,8 @@
         </b-col>
         <b-col id="col2" class="col-12 col-md-10 h-100 my-5">
 
+          <Post/>
+
         </b-col>
       </b-row>
 
@@ -21,11 +23,13 @@
 <script>
 import Nav from '../components/Nav.vue'
 import Footer from '../components/Footer.vue'
+import Post from '../components/Post.vue'
 export default {
     name: 'Actus',
     components: {
       Nav,
-      Footer
+      Footer,
+      Post
     }
 }
 </script>
