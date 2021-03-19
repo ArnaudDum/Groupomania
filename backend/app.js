@@ -2,29 +2,29 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const app = express();
-const mysql = require('mysql');
+const mysql = require('mysql2');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const postRoutes = require('./routes/postRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 
-//const connectToDB = mysql.createConnection({
-//    host: 'localhost',
-//    user: 'dumar',
-//    password: 'High210jump--))'
-//});
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'High210jump--))',
+    database: 'groupo_network'
+});
 
-//connectToDB.connect();
-
-//connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//    if (err) throw err;
-//    console.log('The solution is: ', rows[0].solution);
-//});
-
+connection.connect(function(err) {
+    if (err) {
+      console.error('error connecting: ' + err.stack);
+      return;
+    }
+});
 
 app.use(helmet());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 
 
 app.use('/api/posts', postRoutes);
