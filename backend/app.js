@@ -1,34 +1,41 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const app = express();
-const mysql = require('mysql2');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const mysql = require('mysql');
 
 const postRoutes = require('./routes/postRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'High210jump--))',
-    database: 'groupo_network'
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
 });
 
-connection.connect(function(err) {
-    if (err) {
-      console.error('error connecting: ' + err.stack);
-      return;
-    }
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host    : 'localhost',
+  user    : 'root',
+  password: '',
+  database: 'groupomania'
+});
+
+const databaseAccess = pool.getConnection((err, connection) => {
+  if (err) throw err;
+  console.log('Connecté à la DB');
 });
 
 app.use(helmet());
 
 
-app.use('/posts', postRoutes);
-app.use('/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
 
-
+module.exports = databaseAccess;
 module.exports = app;

@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const postControls = require('../controllers/postControls');
-const auth = require('../middleware/auth');
-
-// AUTH à rajouter
 
 router.get('/', postControls.getPosts);  // GET toutes les publications
 
