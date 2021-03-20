@@ -27,8 +27,8 @@ connection.connect(function(err) {
 app.use(helmet());
 
 
-app.use('/api/posts', postRoutes);
-app.use('/api/users', userRoutes);
+app.use('/posts', postRoutes);
+app.use('/users', userRoutes);
 
 
 module.exports = app;

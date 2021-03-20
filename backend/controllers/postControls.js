@@ -1,7 +1,19 @@
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'High210jump--))',
+    database: 'groupo_network'
+});
+
 exports.getPosts = (req, res, next) => {
-    Posts.find()
-      .then(posts => res.status(200).json(posts))
-      .catch(error => res.status(404).json({ error }));
+    connection.query(
+        'SELECT * FROM Posts',
+        function(err, res) {
+            return res;
+        })
+        
 };
 
 exports.getOnePost = (req, res, next) => {
