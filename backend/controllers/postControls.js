@@ -1,15 +1,24 @@
+const mysql = require('mysql');
+
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host    : 'localhost',
+    user    : 'root',
+    password: '',
+    database: 'groupomania'
+});
+
+
 exports.getPosts = (req, res, next) => {
-    connection.query(
-        'SELECT * FROM posts',
-        (err, result) => {
-            if(!err) {
-                res.status(200).json({ message: 'Accès aux publications' })
-                res.send(result);
-            } else {
-                res.status(400).json({ error });
-            }
-        })
-};
+    pool.getConnection((err, connection) => {
+        if (err) throw err;
+        console.log('Connected to DB');
+        connection.query('SELECT * FROM posts', (error, result) => {
+            connection.release()
+            res.send(result);
+            if(error) throw error ;
+            })
+})};
 
 exports.getOnePost = (req, res, next) => {
     

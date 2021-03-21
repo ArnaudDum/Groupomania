@@ -18,18 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host    : 'localhost',
-  user    : 'root',
-  password: '',
-  database: 'groupomania'
-});
 
-const databaseAccess = pool.getConnection((err, connection) => {
-  if (err) throw err;
-  console.log('Connecté à la DB');
-});
 
 app.use(helmet());
 
@@ -37,5 +26,4 @@ app.use(helmet());
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 
-module.exports = databaseAccess;
 module.exports = app;
