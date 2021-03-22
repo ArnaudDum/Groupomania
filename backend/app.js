@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const mysql = require('mysql');
+const db = require('./database/db.js');
 
 const postRoutes = require('./routes/postRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
@@ -18,6 +19,10 @@ app.use((req, res, next) => {
   next();
 });
 
+db.getConnection((err, connection) => {
+  if (err) throw err;
+  console.log('Connected to DB');
+});
 
 
 app.use(helmet());
