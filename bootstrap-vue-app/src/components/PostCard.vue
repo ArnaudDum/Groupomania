@@ -8,9 +8,16 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
     name: 'PostCard',
-    props: ['PostTitle', 'PostUser', 'PostDate', 'PostText']
+    computed: {
+        ...mapState([])
+    },
+    methods: {
+        
+    }
 }
 </script>
 

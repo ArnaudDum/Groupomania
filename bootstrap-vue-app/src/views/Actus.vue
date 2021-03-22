@@ -24,7 +24,6 @@
 import Nav from '../components/Nav.vue'
 import Footer from '../components/Footer.vue'
 import PostCard from '../components/PostCard.vue'
-// import axios from 'axios'
 
 export default {
     name: 'Actus',
