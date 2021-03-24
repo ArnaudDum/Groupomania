@@ -1,7 +1,7 @@
 <template>
     <div class="m-3 d-flex justify-content-around align-items-center flex-wrap">
         <b-card
-            class="post-card col-12 col-md-5 mx-auto my-3 my-md-4 p-0"
+            class="post-card col-12 col-md-5 col-lg-3 mx-3 my-3 my-md-4 p-0"
             :key="post.id_post" v-for="post in posts"
         >
             <b-card-title class="post-title">{{ post.post_title }}</b-card-title>
