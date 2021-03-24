@@ -15,7 +15,7 @@ const routes = [
     component: Welcome
   },
   {
-    path: '/actualités',
+    path: '/actualites',
     name: 'Actualités',
     component: Actus
   },

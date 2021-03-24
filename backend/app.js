@@ -19,11 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
-db.getConnection((err, connection) => {
-  if (err) throw err;
+db.getConnection((connection) => {
   console.log('Connected to DB');
 });
-
 
 app.use(helmet());
 

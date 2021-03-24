@@ -4,13 +4,13 @@
       <Nav/>
 
       <b-row>
-        <b-col id="col1" class="col-12 col-md-2 h-100">
+        <b-col id="col1" class="col-12 col-md-2">
           <h1 class="h2 mt-4">Voici les dernières publications</h1>
           <p class="mt-3">Vous pouvez réagir et commenter les publications de vos collègues</p>
         </b-col>
-        <b-col id="col2" class="col-12 col-md-10 h-100 my-5">
+        <b-col id="col2" class="col-12 col-md-10 h-100 my-3">
 
-          <PostCard class="col-12 col-md-5"/>
+          <PostCard/>
 
         </b-col>
       </b-row>

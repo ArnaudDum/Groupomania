@@ -4,7 +4,7 @@
     <Nav/>
 
     <b-row id="row profile-row">
-      <b-col id="profile-col-1" class="col-12 col-md-2 h-100">
+      <b-col id="profile-col-1" class="col-12 col-md-2">
         <h2 class="my-3 my-md-5">Ici, vous pouvez modifier votre profil</h2>
         <p class="my-3 my-md-5">Mettez à jour et enregistrez votre profil. Vos collègues vous reconnaîtront plus facilement lors de vos échanges.</p>
       </b-col>

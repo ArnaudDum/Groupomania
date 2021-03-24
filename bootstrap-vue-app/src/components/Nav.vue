@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </b-btn>
             <div id="navbarContent" class="collapse navbar-collapse mr-5">
-                <router-link class="nav-item nav-link mx-5" to="/actualités">Fil d'actualités</router-link> | 
+                <router-link class="nav-item nav-link mx-5" to="/actualites">Fil d'actualités</router-link> | 
                 <router-link class="nav-item nav-link mx-5" to="/publier-un-article">Poster un article</router-link> | 
                 <router-link class="nav-item nav-link mx-5" to="/profil">Mon profil</router-link>
             </div>

@@ -4,7 +4,7 @@
       <Nav/>
 
       <b-row>
-        <b-col id="comment-col-1" class="col-12 col-md-2 h-100">
+        <b-col id="comment-col-1" class="col-12 col-md-2">
           <h2>Commenter un article</h2>
           <p>Vous pouvez réagir aux articles de vos collègues en commentant sur le sujet.</p>
         </b-col>
