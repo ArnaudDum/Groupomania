@@ -36,7 +36,7 @@ export default {
         &:hover {
             background-color: #C15960;
             .nav-item {
-            color: white;
+                color: white;
             &:hover {
                 font-weight: bold;
             }}

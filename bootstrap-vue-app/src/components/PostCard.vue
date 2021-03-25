@@ -35,8 +35,14 @@ export default {
 .post-card{
     position: relative;
     border: 0;
-    border-radius: 20px;
-    box-shadow: 0px 6px 5px 5px rgba(0, 0, 0, 0.10);
+    border-radius: 0;
+    box-shadow: 2px 6px 4px 8px rgba(0, 0, 0, 0.08);
+    background: #AAB0BB;
+    transform: scale(1);
+    transition: transform 300ms ease-out;
+    &:hover {
+        transform: scale(1.03);
+    }
     .post-text {
         overflow: hidden;
         max-height: 40%;

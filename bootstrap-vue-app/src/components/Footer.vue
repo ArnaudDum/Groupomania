@@ -27,12 +27,11 @@ export default {
 
 <style lang="scss">
 footer {
-    background: #343a40;
-    color: white;
+    background-color: #C6CAD2;
     #footer-col-2 a i {
         font-size: 4rem;
         text-decoration: none;
-        color: #DABBBC;
+        color: #384761;
     }
     #footer-col-3 {
         font-size: 0.8rem;

@@ -12,6 +12,6 @@
 #app {
   font-family: 'Roboto Condensed', sans-serif;
   min-height: 100vh;
-  background-color: #F4F3F0;
+  background: linear-gradient(115deg, #1B2D4A, #C15960);
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
       <b-row id="welcome-line">
-        <b-col id="col-1" class="col-12 col-md-6">
+        <b-col id="col-1" class="col-12 col-lg-6">
           <div class="button-line">
-            <b-button pill class="button-line-btn mr-md-5 mt-3" @click="showSignupForm = !showSignupForm; showLoginForm = false">INSCRIPTION</b-button>
-            <b-button pill class="button-line-btn mt-3" @click="showLoginForm = !showLoginForm; showSignupForm = false">CONNEXION</b-button>
+            <b-button class="button-line-btn mr-md-5 mt-3" @click="showSignupForm = !showSignupForm; showLoginForm = false">INSCRIPTION</b-button>
+            <b-button class="button-line-btn mt-3" @click="showLoginForm = !showLoginForm; showSignupForm = false">CONNEXION</b-button>
           </div>
           <h1 class="mt-3">Bienvenue dans votre réseau Groupomania</h1>
           <p class="mt-2">Connectez-vous et commencez à échanger avec vos collègues</p>
         </b-col>
-        <b-col id="col-2" class="col-12 col-md-6 py-5">
+        <b-col id="col-2" class="col-12 col-lg-6 py-5">
           
                 <b-card v-if="showSignupForm" id="signup-form" title="Inscription" class="form-card shadow-lg">
                   <b-card-body>
@@ -81,56 +81,43 @@ export default {
   justify-content: space-around;
   height: 90vh;
   #col-1 {
-    background-color: #848CA4;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     .button-line {
       .button-line-btn {
-        border: solid 1px white;
-        background: #C15960;
-        font-size: 1.4rem;
-        &:active {
-          background: #1B2D4A;
+        border: none;
+        transform: scale(1);
+        transition: transform 600ms ease-out;
+        background: linear-gradient(-115deg, #1B2D4A, 10%, #C15960);
+        letter-spacing: 0.3rem;
+        &:hover {
+          transform: scale(1.20);
         }
       }
     }
     h1 {
       font-family: 'Roboto', sans-serif;
-      color: #565656;
+      color: #fff;
     }
     p {
       font-size: 1.7rem;
       font-weight: bold;
-      color: #DABBBC;
+      color: #fff;
     }
   }
   #col-2 {
-    background: url('../assets/logos/icon.png') center;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    #signup-form {
-      background: #1B2D4A;
-      color: white;
-      &:hover, &:focus {
-        background-color: #C15960;
-        border: solid 5px #1B2D4A;
-      }
-    }
-    #login-form {
-      background: #1B2D4A;
-      color: white;
-      &:hover, &:focus {
-        background-color: #8494A4;
-        border: solid 5px #1B2D4A;
-      }
-    }
     .form-card {
+      border-radius: 0;
+      background: #1B2D4A;
+      color: white;
       border: solid 5px #8494A4;
       transform: scale(1);
-      transition: transform 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
       height: 75%;
       width: 50%;
       @media (max-width: 768px) {
@@ -150,6 +137,9 @@ export default {
       }
       &:hover, &:focus {
         transform: scale(1.02);
+        background-color: #8494A4;
+        border: solid 5px #1B2D4A;
+        color: black;
       }
     }
   }
