@@ -4,7 +4,7 @@ import Actus from '../views/Actus.vue'
 import Profile from '../views/Profile.vue'
 import Post from '../views/Post.vue'
 import Welcome from '../views/Welcome.vue'
-import Comment from '../views/Comment.vue'
+import Article from '../views/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -30,9 +30,9 @@ const routes = [
     component: Post
   },
   {
-    path: '/Commenter',
-    name: 'Commenter',
-    component: Comment
+    path: '/article/:id_post',
+    name: 'Article',
+    component: Article
   }
 ]
 

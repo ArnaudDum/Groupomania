@@ -1,7 +1,7 @@
 <template>
     <b-row>
         <b-nav id="nav" class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand w-25 ml-md-5" href="/actualités"><img src="../assets/logos/icon-left-font-monochrome-white.png" alt="Logo Groupomania"/></a>
+            <a class="navbar-brand w-25 ml-md-5" href="/actualites"><img src="../assets/logos/icon-left-font-monochrome-white.png" alt="Logo Groupomania"/></a>
             <b-btn class="navbar-toggler mr-md-5" type="button" data-toggle="collapse" data-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </b-btn>

@@ -2,13 +2,14 @@ const mysql = require('mysql');
 const db = require('../database/db.js');
 
 exports.getPosts = (req, res, next) => {
-    db.query('SELECT * FROM posts', (error, result) => {
+    db.query('SELECT * FROM posts ORDER BY post_date ASC', (error, result) => {
         res.status(200).send(result);
     })
 };
 
 exports.getOnePost = (req, res, next) => {
-    db.query('SELECT * FROM posts WHERE id=?', [req.params.id], (error, result) => {
+    let stringRequest = 'SELECT * FROM posts WHERE id_post=' + req.params.id_post;
+    db.query(stringRequest, (error, result) => {
         res.status(200).send(result);
     })
 };

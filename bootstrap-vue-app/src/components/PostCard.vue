@@ -2,26 +2,30 @@
     <div class="m-3 d-flex justify-content-around align-items-center flex-wrap">
         <b-card
             class="post-card col-12 col-md-5 col-lg-3 mx-3 my-3 my-md-4 p-0"
-            :key="post.id_post" v-for="post in posts"
+            :key="item.id" v-for="item in posts"
         >
-            <b-card-title class="post-title">{{ post.post_title }}</b-card-title>
-            <h6 class="post-info">Un article de {{ post.name }}, écrit le {{ post.post_date }}.</h6>
-            <b-card-text class="post-text">{{ post.post_text }}</b-card-text>
-            <a href="#" class="post-btn btn stretched-link">Voir l'article</a>
+            <b-card-title class="post-title">{{ item.post_title }}</b-card-title>
+            <h6 class="post-info">Un article de {{ item.name }}, écrit le {{ item.post_date }}.</h6>
+            <b-card-text class="post-text">{{ item.post_text }}</b-card-text>
+            <router-link to="/article/:id" class="post-btn btn stretched-link">Voir l'article</router-link>
         </b-card>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: 'PostCard',
-    computed: {
-        posts() {
-            return this.$store.state.posts
+    props: ['id', 'post_title', 'name', 'post_date', 'post_text'],
+    data() {
+        return {
+            posts: []
         }
     },
     mounted() {
-        this.$store.dispatch('getAllPosts')
+        axios.get('http://localhost:3000/api/posts')
+            .then(response => (this.posts = response.data))
     }
 }
 </script>

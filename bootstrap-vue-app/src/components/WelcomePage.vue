@@ -32,7 +32,7 @@
                         <b-form-input placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
                       <b-btn type="submit">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualités">S'inscrire</router-link>
+                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">S'inscrire</router-link>
                       </b-btn>
                     </b-form>
                   </b-card-body>
@@ -54,7 +54,7 @@
                         <b-form-input placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
                       <b-btn type="submit">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualités">Connexion</router-link>
+                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">Connexion</router-link>
                       </b-btn>
                     </b-form>
                   </b-card-body>

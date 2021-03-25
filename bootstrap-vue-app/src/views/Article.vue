@@ -8,8 +8,8 @@
           <h2>Commenter un article</h2>
           <p>Vous pouvez réagir aux articles de vos collègues en commentant sur le sujet.</p>
         </b-col>
-        <b-col id="comment-col-2" class="col-12 col-md-8 mx-auto px-2 px-md-5 my-5">
-          <h1 class="my-3 my-md-5">Poster un commentaire</h1>
+        <b-col id="comment-col-2" class="col-12 col-md-10 mx-auto px-2 px-md-5 my-5">
+          <PostDetail/>
         </b-col>
       </b-row>
 
@@ -21,10 +21,13 @@
 <script>
 import Nav from '../components/Nav.vue'
 import Footer from '../components/Footer.vue'
+import PostDetail from '../components/PostDetail.vue'
+
 export default {
-    name: 'Comment',
+    name: 'Article',
     components: {
       Nav,
+      PostDetail,
       Footer
     }
 }
