@@ -8,8 +8,7 @@ exports.getPosts = (req, res, next) => {
 };
 
 exports.getOnePost = (req, res, next) => {
-    let stringRequest = 'SELECT * FROM posts WHERE id_post=' + req.params.id_post;
-    db.query(stringRequest, (error, result) => {
+    db.query('SELECT * FROM posts WHERE id=?', [req.params.id], (error, result) => {
         res.status(200).send(result);
     })
 };

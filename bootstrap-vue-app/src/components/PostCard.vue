@@ -7,7 +7,7 @@
             <b-card-title class="post-title">{{ item.post_title }}</b-card-title>
             <h6 class="post-info">Un article de {{ item.name }}, écrit le {{ item.post_date }}.</h6>
             <b-card-text class="post-text">{{ item.post_text }}</b-card-text>
-            <router-link to="/article/:id" class="post-btn btn stretched-link">Voir l'article</router-link>
+            <router-link :to="{name: 'Article', params: {id: item.id}}" class="post-btn btn stretched-link">Voir l'article</router-link>
         </b-card>
     </div>
 </template>
