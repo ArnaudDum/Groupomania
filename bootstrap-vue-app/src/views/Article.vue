@@ -22,11 +22,13 @@
               </div>
           </div>
           <div>
-            <b-form>
+            <b-form class="mt-5">
                 <b-form-group>
                     <textarea placeholder="Ajouter un commentaire..."></textarea>
                 </b-form-group>
-                <b-button id="subBtn" type="submit" class="px-5">ENVOYER</b-button>
+                <div class="d-flex justify-content-center justify-content-md-start">
+                  <b-button id="subBtn" type="submit" class="px-5">ENVOYER</b-button>
+                </div>
             </b-form>
           </div>
         </b-col>
@@ -116,7 +118,6 @@ textarea {
   background: $bg-btn;
   border: none;
   color: #fff;
-  font-weight: bold;
   font-size: 1.3rem;
   transform: scale(1);
   transition: transform 300ms ease-out;
@@ -131,7 +132,7 @@ textarea {
     min-height: 300px;
   }
   textarea {
-    width: 50%;
+    width: 100%;
   }
 }
 @media (min-width: 768px) {

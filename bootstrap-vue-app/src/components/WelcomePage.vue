@@ -116,7 +116,6 @@ export default {
       border-radius: 0;
       background: $blue-dark;
       color: white;
-      border: solid 2px #8494A4;
       transform: scale(1);
       transition: all 500ms ease-in-out;
       height: 75%;
@@ -142,7 +141,6 @@ export default {
       &:hover, &:focus {
         transform: scale(1.05);
         background-color: $blue-light-1;
-        border: solid 15px $blue-dark;
         color: black;
       }
     }

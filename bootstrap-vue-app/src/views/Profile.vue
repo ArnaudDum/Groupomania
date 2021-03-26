@@ -8,27 +8,29 @@
         <h2 class="my-3 my-md-5">Ici, vous pouvez modifier votre profil</h2>
         <p class="my-3 my-md-5">Mettez à jour et enregistrez votre profil. Vos collègues vous reconnaîtront plus facilement lors de vos échanges.</p>
       </b-col>
-      <b-col id="profile-col-2" class="col-12 col-md-8 mx-auto px-2 px-md-5 my-5">
-        <h1 class="my-3 my-md-5">Mon profil</h1>
-        <b-form class="px-lg-5">
-          <b-form-group class="px-lg-5">
-            <label class="h5">Votre nom :</label>
-            <b-form-input placeholder="Prénom Nom"></b-form-input>
-          </b-form-group>
-          <b-form-group class="px-lg-5">
-            <label class="h5">Votre addresse email :</label>
-            <b-form-input placeholder="Email"></b-form-input>
-          </b-form-group>
-          <b-form-group class="px-lg-5">
-            <label class="h5">Votre mot de passe :</label>
-            <b-form-input placeholder="Mot de passe"></b-form-input>
-          </b-form-group>
-          <b-form-group class="px-lg-5">
-            <label class="h5">Veuillez confirmer le mot de passe :</label>
-            <b-form-input placeholder="Mot de passe"></b-form-input>
-          </b-form-group>
-          <b-button type="submit" class="mx-lg-5">Enregistrer les modifications</b-button>
-        </b-form>
+      <b-col id="profile-col-2" class="col-12 col-md-10 mx-auto px-2 px-md-5 my-5">
+        <div id="profil-area" class="p-3 p-md-5">
+          <h1 class="my-3 my-md-5">Mon profil</h1>
+          <b-form class="px-lg-5">
+            <b-form-group class="px-lg-5">
+              <label class="h5">Votre nom :</label>
+              <b-form-input placeholder="Prénom Nom"></b-form-input>
+            </b-form-group>
+            <b-form-group class="px-lg-5">
+              <label class="h5">Votre addresse email :</label>
+              <b-form-input placeholder="Email"></b-form-input>
+            </b-form-group>
+            <b-form-group class="px-lg-5">
+              <label class="h5">Votre mot de passe :</label>
+              <b-form-input placeholder="Mot de passe"></b-form-input>
+            </b-form-group>
+            <b-form-group class="px-lg-5">
+              <label class="h5">Veuillez confirmer le mot de passe :</label>
+              <b-form-input placeholder="Mot de passe"></b-form-input>
+            </b-form-group>
+            <b-button id="profil-btn" type="submit" class="mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
+          </b-form>
+        </div>
       </b-col>
     </b-row>
 
@@ -61,8 +63,12 @@ export default {
   color: white;
 }
 #profile-col-2 {
-  button {
+  #profil-area {
+    background: $blue-light-2;
+  }
+  #profil-btn {
     background: #C15960;
+    letter-spacing: 0.2rem;
   }
 }
 </style>

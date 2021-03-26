@@ -14,7 +14,7 @@ exports.getOnePost = (req, res, next) => {
 };
 
 exports.getAllComments = (req, res, next) => {
-    db.query('SELECT * FROM comments WHERE id_post=?', [req.params.id], (error, result) => {
+    db.query('SELECT * FROM comments WHERE id_post=? ORDER BY comment_date DESC', [req.params.id], (error, result) => {
         res.status(200).send(result);
     })
 };
