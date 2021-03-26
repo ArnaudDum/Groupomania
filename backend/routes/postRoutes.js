@@ -4,7 +4,9 @@ const postControls = require('../controllers/postControls');
 
 router.get('/', postControls.getPosts);  // GET toutes les publications
 
-router.get('/:id', postControls.getOnePost);  // GET une publication + accès à tous les commentaires de la publication ciblée
+router.get('/:id', postControls.getOnePost);  // GET une publication
+
+router.get('/:id/comments', postControls.getAllComments);  // GET tous les commentaires d'une publication
 
 router.post('/', postControls.createPost);  // POST une publication
 

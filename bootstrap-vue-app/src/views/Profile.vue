@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../public/styles.scss';
 @media (min-width: 768px) {
   #profile-row {
     height: 90vh;

@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../public/styles.scss';
 #col1 {
   color: white;
   background: #1B2D4A;

@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../public/styles.scss';
 #post-col-1 {
   background: #1B2D4A;
   color: white;

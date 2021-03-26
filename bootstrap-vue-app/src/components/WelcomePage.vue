@@ -31,8 +31,8 @@
                         </div>
                         <b-form-input placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
-                      <b-btn type="submit">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">S'inscrire</router-link>
+                      <b-btn class="form-btn" type="submit">
+                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">S'INSCRIRE</router-link>
                       </b-btn>
                     </b-form>
                   </b-card-body>
@@ -53,8 +53,8 @@
                         </div>
                         <b-form-input placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
-                      <b-btn type="submit">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">Connexion</router-link>
+                      <b-btn class="form-btn" type="submit">
+                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">CONNEXION</router-link>
                       </b-btn>
                     </b-form>
                   </b-card-body>
@@ -77,6 +77,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../public/styles.scss';
 #welcome-line {
   justify-content: space-around;
   height: 90vh;
@@ -90,7 +91,7 @@ export default {
         border: none;
         transform: scale(1);
         transition: transform 600ms ease-out;
-        background: linear-gradient(-115deg, #1B2D4A, 10%, #C15960);
+        background: $bg-card;
         letter-spacing: 0.3rem;
         &:hover {
           transform: scale(1.20);
@@ -113,13 +114,16 @@ export default {
     align-items: center;
     .form-card {
       border-radius: 0;
-      background: #1B2D4A;
+      background: $blue-dark;
       color: white;
-      border: solid 5px #8494A4;
+      border: solid 2px #8494A4;
       transform: scale(1);
       transition: all 500ms ease-in-out;
       height: 75%;
       width: 50%;
+      .form-btn {
+        letter-spacing: 0.3rem;
+      }
       @media (max-width: 768px) {
         height: 100%;
         width: 100%;
@@ -136,9 +140,9 @@ export default {
         }
       }
       &:hover, &:focus {
-        transform: scale(1.02);
-        background-color: #8494A4;
-        border: solid 5px #1B2D4A;
+        transform: scale(1.05);
+        background-color: $blue-light-1;
+        border: solid 15px $blue-dark;
         color: black;
       }
     }

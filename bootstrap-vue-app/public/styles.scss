@@ -1,0 +1,14 @@
+// COLOR
+
+$blue-dark: #1B2D4A;
+$blue-light-1: #8494A4;
+$blue-light-2: #AAB0BB;
+$red: #C15960;
+
+// BACKGROUND
+
+$bg-general: linear-gradient(115deg, $blue-dark, $red);
+$bg-card: linear-gradient(-115deg, $blue-dark, 10%, $red);
+$bg-btn: linear-gradient(-115deg, $blue-dark, 40%, $red);
+
+// COMPONENTS

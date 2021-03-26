@@ -31,13 +31,13 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import '../../public/styles.scss';
 .post-card{
     position: relative;
     border: 0;
     border-radius: 0;
     box-shadow: 2px 6px 4px 8px rgba(0, 0, 0, 0.08);
-    background: #AAB0BB;
+    background: $blue-light-2;
     transform: scale(1);
     transition: transform 300ms ease-out;
     &:hover {
@@ -51,7 +51,7 @@ export default {
         position: absolute;
         bottom: 20px;
         color: white;
-        background: #C15960;
+        background: $red;
     }
 }
 @media (max-width: 767px) {
@@ -68,6 +68,10 @@ export default {
     }
 }
 @media (min-width: 768px) {
+    .post-title {
+        max-height: 20%;
+        overflow: hidden;
+    }
     .post-card {
         height: 260px;
     }

@@ -13,6 +13,12 @@ exports.getOnePost = (req, res, next) => {
     })
 };
 
+exports.getAllComments = (req, res, next) => {
+    db.query('SELECT * FROM comments WHERE id_post=?', [req.params.id], (error, result) => {
+        res.status(200).send(result);
+    })
+};
+
 exports.createPost = (req, res, next) => {
     db.query('INSERT INTO posts SET ?', [...req.body], (error, result) => {
         res.status(201).json({ message: 'Article publié !' });

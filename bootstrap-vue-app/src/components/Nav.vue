@@ -21,10 +21,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../public/styles.scss';
 #nav {
     width: 100%;
     .navbar {
-        background-color: #1B2D4A;
+        background-color: $blue-dark;
         transition: background-color 400ms;
         #toggle {
             color: white;
@@ -34,7 +35,7 @@ export default {
             color: white;
         }
         &:hover {
-            background-color: #C15960;
+            background-color: $red;
             .nav-item {
                 color: white;
             &:hover {

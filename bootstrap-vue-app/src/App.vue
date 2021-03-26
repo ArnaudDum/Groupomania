@@ -9,9 +9,10 @@
 </script>
 
 <style lang="scss">
+@import '../public/styles.scss';
 #app {
   font-family: 'Roboto Condensed', sans-serif;
   min-height: 100vh;
-  background: linear-gradient(115deg, #1B2D4A, #C15960);
+  background: $bg-general;
 }
 </style>
