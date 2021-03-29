@@ -20,7 +20,7 @@ exports.getAllComments = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-    db.query('INSERT INTO posts SET ?', [...req.body], (error, result) => {
+    db.query('INSERT INTO posts VALUES (?)', [...req.body], (error, result) => {
         res.status(201).json({ message: 'Article publié !' });
     })
 };

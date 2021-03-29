@@ -14,11 +14,11 @@
             <b-form class="px-lg-5 my-md-5">
               <b-form-group class="px-lg-5">
                 <label class="h4">Titre de mon article :</label>
-                <b-form-input></b-form-input>
+                <b-form-input id="titleInput"></b-form-input>
               </b-form-group>
               <b-form-group class="px-lg-5 d-flex flex-column justify-content-center">
                 <label class="h4">Mon article :</label>
-                <b-form-textarea rows="8" no-resize></b-form-textarea>
+                <b-form-textarea id="textInput" rows="8" no-resize></b-form-textarea>
               </b-form-group>
               <b-btn id="post-btn" type="submit" class="mx-lg-5 px-md-5">POSTER</b-btn>
             </b-form>
@@ -39,7 +39,7 @@ export default {
     components: {
       Nav,
       Footer
-    }
+    },
 }
 </script>
 
