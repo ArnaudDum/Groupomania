@@ -17,19 +17,19 @@
                         <div>
                           <span><i class="fas fa-user"></i></span>
                         </div>
-                        <b-form-input placeholder="Prénom Nom"></b-form-input>
+                        <b-form-input v-model="signupName" placeholder="Prénom Nom"></b-form-input>
                       </b-form-group>
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-at"></i></span>
                         </div>
-                        <b-form-input placeholder="Email"></b-form-input>
+                        <b-form-input v-model="signupEmail" placeholder="Email"></b-form-input>
                       </b-form-group>
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-key"></i></span>
                         </div>
-                        <b-form-input placeholder="Mot de passe"></b-form-input>
+                        <b-form-input v-model="signupPassword" placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
                       <b-btn class="form-btn" type="submit">
                         <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">S'INSCRIRE</router-link>
@@ -53,7 +53,7 @@
                         </div>
                         <b-form-input placeholder="Mot de passe"></b-form-input>
                       </b-form-group>
-                      <b-btn class="form-btn" type="submit">
+                      <b-btn class="form-btn" type="submit" @click="sendSignupForm">
                         <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">CONNEXION</router-link>
                       </b-btn>
                     </b-form>
@@ -65,12 +65,32 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'WelcomePage',
   data() {
     return {
       showSignupForm: false,
-      showLoginForm: false
+      showLoginForm: false,
+      signupName: '',
+      signupEmail: '',
+      signupPassword: ''
+    }
+  },
+  methods: {
+    sendSignupForm() {
+        axios.post('http://localhost:3000/api/users/signup', {
+          name: this.signupName,
+          email: this.signupEmail,
+          password: this.signupPassword  
+        })
+          .then(response => {
+            sessionStorage.setItem('session', {
+              userId: response.data.userId,
+              token: response.data.token
+            })
+          })
     }
   }
 }

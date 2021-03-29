@@ -17,9 +17,9 @@ exports.signup = (req, res, next) => {
             })
                 .then(
                     res.status(200).json({
-                        userId: user._id,
+                        userId: user.id,
                         token: jwt.sign(
-                            {userId: user._id},
+                            {userId: user.id},
                             'RANDOM',
                             {expiresIn: '24h'}
                         )
