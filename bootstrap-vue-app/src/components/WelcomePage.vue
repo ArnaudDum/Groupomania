@@ -12,50 +12,70 @@
           
                 <b-card v-if="showSignupForm" id="signup-form" title="Inscription" class="form-card shadow-lg">
                   <b-card-body>
-                    <b-form class="forms text-center">
+                    <b-form
+                      class="forms text-center"
+                      @submit.prevent="sendSignupForm">
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-user"></i></span>
                         </div>
-                        <b-form-input v-model="signupName" placeholder="Prénom Nom"></b-form-input>
+                        <b-form-input
+                          v-model="signup.signupName"
+                          placeholder="Prénom Nom"
+                          required>
+                        </b-form-input>
                       </b-form-group>
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-at"></i></span>
                         </div>
-                        <b-form-input v-model="signupEmail" placeholder="Email"></b-form-input>
+                        <b-form-input
+                          v-model="signup.signupEmail"
+                          placeholder="Email"
+                          required>
+                        </b-form-input>
                       </b-form-group>
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-key"></i></span>
                         </div>
-                        <b-form-input v-model="signupPassword" placeholder="Mot de passe"></b-form-input>
+                        <b-form-input
+                          v-model="signup.signupPassword"
+                          placeholder="Mot de passe"
+                          aria-required>
+                        </b-form-input>
                       </b-form-group>
-                      <b-btn class="form-btn" type="submit">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">S'INSCRIRE</router-link>
-                      </b-btn>
+                        <b-btn class="h-md-100 w-md-25 form-routes btn btn-secondary form-btn" type="submit">S'INSCRIRE</b-btn>
                     </b-form>
                   </b-card-body>
                 </b-card>
 
                 <b-card v-if="showLoginForm" id="login-form" title="Connexion" class="form-card shadow-lg">
                   <b-card-body>
-                    <b-form class="forms text-center">
+                    <b-form
+                      class="forms text-center"
+                      @submit.prevent="sendLoginForm">
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-at"></i></span>
                         </div>
-                        <b-form-input placeholder="Email"></b-form-input>
+                        <b-form-input
+                          v-model="login.loginEmail"
+                          placeholder="Email"
+                          required>
+                        </b-form-input>
                       </b-form-group>
                       <b-form-group class="form-group">
                         <div>
                           <span><i class="fas fa-key"></i></span>
                         </div>
-                        <b-form-input placeholder="Mot de passe"></b-form-input>
+                        <b-form-input
+                          v-model="login.loginPassword"
+                          placeholder="Mot de passe"
+                          required>
+                        </b-form-input>
                       </b-form-group>
-                      <b-btn class="form-btn" type="submit" @click="sendSignupForm">
-                        <router-link class="h-md-100 w-md-25 form-routes" to="/actualites">CONNEXION</router-link>
-                      </b-btn>
+                        <b-btn class="h-md-100 w-md-25 form-routes btn btn-secondary form-btn" type="submit">CONNEXION</b-btn>
                     </b-form>
                   </b-card-body>
                 </b-card>
@@ -73,24 +93,37 @@ export default {
     return {
       showSignupForm: false,
       showLoginForm: false,
-      signupName: '',
-      signupEmail: '',
-      signupPassword: ''
+      signup: {
+        signupName: null,
+        signupEmail: null,
+        signupPassword: null
+      },
+      login: {
+        loginEmail: null,
+        loginPassword: null
+      }
     }
   },
   methods: {
     sendSignupForm() {
-        axios.post('http://localhost:3000/api/users/signup', {
-          name: this.signupName,
-          email: this.signupEmail,
-          password: this.signupPassword  
+      let signupDatas = {
+        name: this.signup.signupName,
+        email: this.signup.signupEmail,
+        password: this.signup.signupPassword  
+      }
+      axios.post('http://localhost:3000/api/users/signup', signupDatas)
+    },
+    sendLoginForm() {
+      let loginDatas = {
+        email: this.login.loginEmail,
+        password: this.login.loginPassword
+      }
+      axios.post('http://localhost:3000/api/users/login', loginDatas)
+        .then(response => {
+            sessionStorage.setItem('userId', response.data.userId)
+            sessionStorage.setItem('token', response.data.token)
+            document.location.href="http://localhost:8080/actualites"
         })
-          .then(response => {
-            sessionStorage.setItem('session', {
-              userId: response.data.userId,
-              token: response.data.token
-            })
-          })
     }
   }
 }

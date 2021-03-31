@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss">
 @import '../../public/styles.scss';
+
 .post-card{
     position: relative;
     border: 0;

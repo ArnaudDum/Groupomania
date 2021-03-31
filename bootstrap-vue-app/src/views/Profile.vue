@@ -28,7 +28,8 @@
               <label class="h5">Veuillez confirmer le mot de passe :</label>
               <b-form-input placeholder="Mot de passe"></b-form-input>
             </b-form-group>
-            <b-button id="profil-btn" type="submit" class="mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
+            <b-button type="submit" class="profil-btn mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
+            <b-button class="profil-btn mx-lg-5 px-5 my-3 my-md-4"><i class="fas fa-trash-alt"></i>SUPPRIMER CE COMPTE</b-button>
           </b-form>
         </div>
       </b-col>
@@ -66,9 +67,12 @@ export default {
   #profil-area {
     background: $blue-light-2;
   }
-  #profil-btn {
+  .profil-btn {
     background: #C15960;
     letter-spacing: 0.2rem;
+    i {
+      margin-right: 1rem;
+    }
   }
 }
 </style>
