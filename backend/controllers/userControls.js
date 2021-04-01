@@ -14,7 +14,6 @@ exports.signup = (req, res, next) => {
             let request = 'INSERT INTO users (name, email, password) VALUES ("' + user.name + '", "' + user.email + '", "' + user.password + '")';
             db.query(request, (err, result) => {
                 res.status(201).json({message: 'Nouvel utilisateur enregistré'});
-                if (err) throw err;
             })
         })
         .catch(error => res.status(500).json({ error }))
@@ -31,6 +30,7 @@ exports.login = (req, res, next) => {
                     return res.status(401).json({message: 'Mot de passe in correct'})
                 }
                 res.send({
+                    user: result[0].name,
                     userId: result[0].id,
                     token: jwt.sign(
                         {userId: result[0].id},
@@ -42,6 +42,14 @@ exports.login = (req, res, next) => {
     })
 };
 
-exports.deleteUser = (req, res, next) => {
+exports.infos = (req, res, next) => {
+    db.query('SELECT * FROM users WHERE id=?', [req.params.id], (err, result) => {
+        res.status(200).send(result);
+    })
+};
 
+exports.deleteUser = (req, res, next) => {
+    db.query('DELETE FROM users WHERE id=?', [req.params.id], (err, result) => {
+        res.status(201).json({message: 'Utilisateur supprimé'})
+    })
 };

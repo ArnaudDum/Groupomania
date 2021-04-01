@@ -20,26 +20,27 @@ exports.getAllComments = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-    db.query('INSERT INTO posts VALUES (?)', [...req.body], (error, result) => {
-        res.status(201).json({ message: 'Article publié !' });
+    let request = 'INSERT INTO posts (id_user, name, post_title, post_text) VALUES ("' + req.body.userId + '", "' + req.body.name + '", "' + req.body.title + '", "' + req.body.text + '")';
+    db.query(request, (error, result) => {
+        res.status(201).json({ message: 'ARTICLE PUBLIÉ !' });
     })
 };
 
 exports.comment = (req, res, next) => {
     db.query('INSERT INTO comments SET ?', [...req.body], (error, result) => {
-        res.status(201).json({ message: 'Commentaire publié !' });
+        res.status(201).json({ message: 'COMMENTAIRE PUBLIÉ !' });
     })
 };
 
 exports.deleteOnePost = (req, res, next) => {
     db.query('DELETE FROM posts WHERE id=?', [req.params.id], (error, result) => {
-        res.status(200).json({ message: 'Publication supprimée' });
+        res.status(200).json({ message: 'PUBLICATION SUPPRIMÉE !' });
     })
 };
 
 exports.deleteOneComment = (req, res, next) => {
     db.query('DELETE FROM comments WHERE id=?', [req.params.id], (error, result) => {
-        res.status(200).json({ message: 'Commentaire supprimé' });
+        res.status(200).json({ message: 'COMMENTAIRE SUPPRIMÉE !' });
     })
 };
 

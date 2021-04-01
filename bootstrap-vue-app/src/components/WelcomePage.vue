@@ -52,6 +52,7 @@
 
                 <b-card v-if="showLoginForm" id="login-form" title="Connexion" class="form-card shadow-lg">
                   <b-card-body>
+                    <p id="message-nouveau" v-if="signupFormSent == true">Nouveau compte enregistré, vous pouvez maintenant vous connecter !</p>
                     <b-form
                       class="forms text-center"
                       @submit.prevent="sendLoginForm">
@@ -93,6 +94,7 @@ export default {
     return {
       showSignupForm: false,
       showLoginForm: false,
+      signupFormSent: false,
       signup: {
         signupName: null,
         signupEmail: null,
@@ -112,6 +114,11 @@ export default {
         password: this.signup.signupPassword  
       }
       axios.post('http://localhost:3000/api/users/signup', signupDatas)
+        .then(() => {
+          this.signupFormSent = true;
+          this.showLoginForm = true;
+          this.showSignupForm = false;
+        })
     },
     sendLoginForm() {
       let loginDatas = {
@@ -122,6 +129,7 @@ export default {
         .then(response => {
             sessionStorage.setItem('userId', response.data.userId)
             sessionStorage.setItem('token', response.data.token)
+            sessionStorage.setItem('user', response.data.user)
             document.location.href="http://localhost:8080/actualites"
         })
     }
@@ -173,6 +181,9 @@ export default {
       transition: all 500ms ease-in-out;
       height: 75%;
       width: 50%;
+      #message-nouveau {
+        font-size: 1.3rem;
+      }
       .form-btn {
         letter-spacing: 0.3rem;
       }

@@ -14,11 +14,11 @@
           <b-form class="px-lg-5">
             <b-form-group class="px-lg-5">
               <label class="h5">Votre nom :</label>
-              <b-form-input placeholder="Prénom Nom"></b-form-input>
+              <b-form-input :placeholder="user.profil[0].name"></b-form-input>
             </b-form-group>
             <b-form-group class="px-lg-5">
               <label class="h5">Votre addresse email :</label>
-              <b-form-input placeholder="Email"></b-form-input>
+              <b-form-input :placeholder="user.profil[0].email"></b-form-input>
             </b-form-group>
             <b-form-group class="px-lg-5">
               <label class="h5">Votre mot de passe :</label>
@@ -29,7 +29,7 @@
               <b-form-input placeholder="Mot de passe"></b-form-input>
             </b-form-group>
             <b-button type="submit" class="profil-btn mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
-            <b-button class="profil-btn mx-lg-5 px-5 my-3 my-md-4"><i class="fas fa-trash-alt"></i>SUPPRIMER CE COMPTE</b-button>
+            <b-button @click="deleteUser" class="profil-btn mx-lg-5 px-5 my-3 my-md-4"><i class="fas fa-trash-alt"></i>SUPPRIMER CE COMPTE</b-button>
           </b-form>
         </div>
       </b-col>
@@ -41,13 +41,45 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Nav from '../components/Nav.vue'
 import Footer from '../components/Footer.vue'
+
 export default {
     name: 'Profile',
     components: {
       Nav,
       Footer
+    },
+    data() {
+      return {
+        user: {
+          profil: [],
+          userId: ''
+        }
+      }
+    },
+    methods: {
+      deleteUser() {
+        axios.delete('http://localhost:3000/api/users/delete/' + this.user.userId)
+          .then(() => {
+            window.location.href="http://localhost:8080/"
+            sessionStorage.clear()
+          })
+      }
+    },
+    created() {
+      return this.user.userId = sessionStorage.getItem('userId')
+    },
+    beforeMount() {
+      axios.get('http://localhost:3000/api/users/infos/' + this.user.userId)
+        .then(response => {
+          let userObj = {
+            name: response.data[0].name,
+            email: response.data[0].email
+          }
+          this.user.profil.push(userObj)
+        })
     }
 }
 </script>
