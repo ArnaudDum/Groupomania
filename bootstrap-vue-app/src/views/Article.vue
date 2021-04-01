@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between">
               <h1>{{ this.post.post_title }}</h1>
 
-              <!--<b-btn v-if="isAuthor = true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER CET ARTICLE</b-btn>-->
+              <b-btn v-if="this.post.id_user=this.userId" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER CET ARTICLE</b-btn>
               
             </div>
             <h3>Publié par {{ this.post.name }}, le {{ this.post.post_date }}.</h3>
@@ -55,15 +55,14 @@ export default {
       Nav,
       Footer
     },
-    props: ['id', 'post_title', 'post_text', 'name', 'post_date'],
     data() {
       return {
         post: [],
         comments: [],
         pageId: this.$route.params.id,
+        userId: null,
         comment: null,
         message: null,
-        userId: null,
         isAuthor: false,
       }
     },
