@@ -27,7 +27,8 @@ exports.createPost = (req, res, next) => {
 };
 
 exports.comment = (req, res, next) => {
-    db.query('INSERT INTO comments SET ?', [...req.body], (error, result) => {
+    let request = 'INSERT INTO comments (id_post, id_user, name, comment_text) VALUES ("'+req.body.postId+'", "'+req.body.userId+'", "'+req.body.name+'", "'+req.body.text+'")';
+    db.query(request, (error, result) => {
         res.status(201).json({ message: 'COMMENTAIRE PUBLIÉ !' });
     })
 };
@@ -45,9 +46,5 @@ exports.deleteOneComment = (req, res, next) => {
 };
 
 exports.modifyPost = (req, res, next) => {
-
-};
-
-exports.modifyComment = (req, res, next) => {
 
 };

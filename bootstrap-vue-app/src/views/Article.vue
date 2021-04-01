@@ -22,9 +22,9 @@
               </div>
           </div>
           <div>
-            <b-form class="mt-5">
+            <b-form @submit.prevent="sendComment" class="mt-5">
                 <b-form-group>
-                    <textarea placeholder="Ajouter un commentaire..."></textarea>
+                    <textarea v-model="comment" placeholder="Ajouter un commentaire..."></textarea>
                 </b-form-group>
                 <div class="d-flex justify-content-center justify-content-md-start">
                   <b-button id="subBtn" type="submit" class="px-5">ENVOYER</b-button>
@@ -55,7 +55,21 @@ export default {
       return {
         post: [],
         comments: [],
-        pageId: this.$route.params.id
+        pageId: this.$route.params.id,
+        comment: null,
+      }
+    },
+    methods: {
+      sendComment() {
+        let commentObj = {
+          postId: this.pageId,
+          userId: sessionStorage.getItem('userId'),
+          name: sessionStorage.getItem('user'),
+          text: this.comment,
+          message: null,
+        }
+        axios.post('http://localhost:3000/api/posts/comment', commentObj)
+          .then(response => (this.message = response.data.message))
       }
     },
     mounted() {
