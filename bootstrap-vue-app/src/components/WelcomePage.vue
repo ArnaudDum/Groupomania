@@ -40,6 +40,7 @@
                           <span><i class="fas fa-key"></i></span>
                         </div>
                         <b-form-input
+                          type="password"
                           v-model="signup.signupPassword"
                           placeholder="Mot de passe"
                           aria-required>
@@ -71,6 +72,7 @@
                           <span><i class="fas fa-key"></i></span>
                         </div>
                         <b-form-input
+                          type="password"
                           v-model="login.loginPassword"
                           placeholder="Mot de passe"
                           required>

@@ -10,7 +10,12 @@
         </b-col>
         <b-col id="comment-col-2" class="col-12 col-md-10 mx-auto px-2 px-md-5 my-5">
           <div id="articleCard" class="p-2 p-md-4 p-lg-5 mb-1 d-flex flex-column justify-content-around">
-            <h1>{{ this.post.post_title }}</h1>
+            <div class="d-flex justify-content-between">
+              <h1>{{ this.post.post_title }}</h1>
+
+              <!--<b-btn v-if="isAuthor = true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER CET ARTICLE</b-btn>-->
+              
+            </div>
             <h3>Publié par {{ this.post.name }}, le {{ this.post.post_date }}.</h3>
             <p>{{ this.post.post_text }}</p>
           </div>
@@ -57,6 +62,9 @@ export default {
         comments: [],
         pageId: this.$route.params.id,
         comment: null,
+        message: null,
+        userId: null,
+        isAuthor: false,
       }
     },
     methods: {
@@ -66,17 +74,21 @@ export default {
           userId: sessionStorage.getItem('userId'),
           name: sessionStorage.getItem('user'),
           text: this.comment,
-          message: null,
         }
         axios.post('http://localhost:3000/api/posts/comment', commentObj)
           .then(response => (this.message = response.data.message))
+          .then(() => window.location.href=("http://localhost:8080/article/" + this.pageId))
       }
+    },
+    beforeCreate() {
+      this.userId = sessionStorage.getItem('userId');
     },
     mounted() {
       axios.get('http://localhost:3000/api/posts/' + this.pageId)
         .then(response => {
           let postObj = {
             id: response.data[0].id,
+            id_user: response.data[0].id_user,
             post_title: response.data[0].post_title,
             post_text: response.data[0].post_text,
             name: response.data[0].name,
@@ -89,6 +101,7 @@ export default {
           for(const element of response.data) {
             let commentObj = {
               id_comment: element.id,
+              id_user: element.id_user,
               comment_name: element.name,
               comment_text: element.comment_text,
               comment_date: element.comment_date,
@@ -108,6 +121,15 @@ export default {
 }
 #articleCard {
   background: $blue-light-2;
+  #delete-btn {
+    color: #fff;
+    font-size: 0.8rem;
+    letter-spacing: 0.3rem;
+    background: #B22222;
+    i {
+      margin-right: 1rem;
+    }
+  }
 }
 #commentTitle {
   color: #fff;

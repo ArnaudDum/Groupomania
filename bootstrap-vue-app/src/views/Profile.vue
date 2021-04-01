@@ -14,21 +14,21 @@
           <b-form class="px-lg-5">
             <b-form-group class="px-lg-5">
               <label class="h5">Votre nom :</label>
-              <b-form-input :placeholder="user.profil[0].name"></b-form-input>
+              <b-form-input id="nameInput" :placeholder="user.profil[0].name" required></b-form-input>
             </b-form-group>
             <b-form-group class="px-lg-5">
               <label class="h5">Votre addresse email :</label>
-              <b-form-input :placeholder="user.profil[0].email"></b-form-input>
+              <b-form-input id="emailInput" :placeholder="user.profil[0].email" required></b-form-input>
             </b-form-group>
             <b-form-group class="px-lg-5">
               <label class="h5">Votre mot de passe :</label>
-              <b-form-input placeholder="Mot de passe"></b-form-input>
+              <b-form-input type="password" id="passwordInput-1" placeholder="Mot de passe" required></b-form-input>
             </b-form-group>
             <b-form-group class="px-lg-5">
               <label class="h5">Veuillez confirmer le mot de passe :</label>
-              <b-form-input placeholder="Mot de passe"></b-form-input>
+              <b-form-input type="password" id="passwordInput-2" placeholder="Mot de passe" required></b-form-input>
             </b-form-group>
-            <b-button type="submit" class="profil-btn mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
+            <b-button @click="updateUser" type="submit" class="profil-btn mx-lg-5 px-5 my-3 my-md-4">ENREGISTRER</b-button>
             <b-button @click="deleteUser" class="profil-btn mx-lg-5 px-5 my-3 my-md-4"><i class="fas fa-trash-alt"></i>SUPPRIMER CE COMPTE</b-button>
           </b-form>
         </div>
@@ -55,7 +55,7 @@ export default {
       return {
         user: {
           profil: [],
-          userId: ''
+          userId: '',
         }
       }
     },
@@ -66,6 +66,18 @@ export default {
             window.location.href="http://localhost:8080/"
             sessionStorage.clear()
           })
+      },
+      updateUser() {
+        let check1 = document.getElementById('passwordInput-1').value;
+        let check2 = document.getElementById('passwordInput-2').value;
+        if(check1 === check2) {
+          let updateObj = {
+            name: document.getElementById('nameInput').value,
+            email: document.getElementById('emailInput').value,
+            password: check2,
+          }
+          axios.put(('http://localhost:3000/api/users/infos/' + this.user.userId), updateObj)
+        }
       }
     },
     created() {
@@ -76,7 +88,8 @@ export default {
         .then(response => {
           let userObj = {
             name: response.data[0].name,
-            email: response.data[0].email
+            email: response.data[0].email,
+            password: ''
           }
           this.user.profil.push(userObj)
         })

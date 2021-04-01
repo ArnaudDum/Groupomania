@@ -53,3 +53,14 @@ exports.deleteUser = (req, res, next) => {
         res.status(201).json({message: 'Utilisateur supprimé'})
     })
 };
+
+exports.updateUser = (req, res, next) => {
+    bcrypt.hash(req.body.password, 10)
+        .then(hash => {
+            let request = 'UPDATE users SET name="' +req.body.name+ '", email="' +req.body.email+ '", password="' +hash+ '" WHERE id=?';
+            db.query(request, [req.params.id], (err, result) => {
+                res.status(201).json({message: 'Utilisateur supprimé'})
+            })
+        })
+    
+};

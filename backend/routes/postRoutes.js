@@ -10,8 +10,6 @@ router.get('/:id/comments', postControls.getAllComments);  // GET tous les comme
 
 router.post('/', postControls.createPost);  // POST une publication
 
-router.put('/:id', postControls.modifyPost);  // PUT une publication de l'utilisateur
-
 router.delete('/:id', postControls.deleteOnePost);  // DELETE une publication de l'utilisateur
 
 router.post('/comment', postControls.comment);  //  POST un commentaire sur une publication

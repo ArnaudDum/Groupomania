@@ -8,6 +8,8 @@ router.post('/login', userCtrl.login);  //  POST une nouvelle connexion utilisat
 
 router.get('/infos/:id', userCtrl.infos);  //  GET infos utilisateur
 
+router.put('/infos/:id', userCtrl.updateUser);
+
 router.delete('/delete/:id', userCtrl.deleteUser);  //  DELETE un compte utilisateur
 
 module.exports = router;

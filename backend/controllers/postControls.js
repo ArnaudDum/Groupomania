@@ -44,7 +44,3 @@ exports.deleteOneComment = (req, res, next) => {
         res.status(200).json({ message: 'COMMENTAIRE SUPPRIMÉE !' });
     })
 };
-
-exports.modifyPost = (req, res, next) => {
-
-};
