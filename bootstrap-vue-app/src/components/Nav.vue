@@ -8,7 +8,8 @@
             <div id="navbarContent" class="collapse navbar-collapse mr-5">
                 <router-link class="nav-item nav-link mx-5" to="/actualites">Fil d'actualités</router-link> | 
                 <router-link class="nav-item nav-link mx-5" to="/publier-un-article">Poster un article</router-link> | 
-                <router-link class="nav-item nav-link mx-5" to="/profil">Mon profil</router-link>
+                <router-link class="nav-item nav-link mx-5" to="/profil">Mon profil</router-link> |
+                <router-link @click.native="clearSession" class="nav-item nav-link mx-5" to="/">Déconnexion</router-link>
             </div>
         </b-nav>
     </b-row>
@@ -16,7 +17,12 @@
 
 <script>
 export default {
-    name: 'Nav'
+    name: 'Nav',
+    methods: {
+        clearSession() {
+            sessionStorage.clear()
+        }
+    }
 }
 </script>
 
