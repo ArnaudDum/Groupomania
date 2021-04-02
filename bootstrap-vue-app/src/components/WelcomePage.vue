@@ -2,8 +2,8 @@
       <b-row id="welcome-line">
         <b-col id="col-1" class="col-12 col-lg-6">
           <div class="button-line">
-            <b-button class="button-line-btn mr-md-5 mt-3" @click="showSignupForm = !showSignupForm; showLoginForm = false">INSCRIPTION</b-button>
-            <b-button class="button-line-btn mt-3" @click="showLoginForm = !showLoginForm; showSignupForm = false">CONNEXION</b-button>
+            <b-button class="button-line-btn mx-5 mt-3" @click="showSignupForm = !showSignupForm; showLoginForm = false">INSCRIPTION</b-button>
+            <b-button class="button-line-btn mx-5 mt-3" @click="showLoginForm = !showLoginForm; showSignupForm = false">CONNEXION</b-button>
           </div>
           <h1 class="mt-3">Bienvenue dans votre réseau Groupomania</h1>
           <p class="mt-2">Connectez-vous et commencez à échanger avec vos collègues</p>
@@ -210,6 +210,14 @@ export default {
         color: black;
       }
     }
+  }
+}
+@media(max-width:500px) {
+  .button-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

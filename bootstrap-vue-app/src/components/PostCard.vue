@@ -5,7 +5,7 @@
             :key="item.id" v-for="item in posts"
         >
             <b-card-title class="post-title">{{ item.post_title }}</b-card-title>
-            <h6 class="post-info">Un article de {{ item.name }}, écrit le {{ item.post_date }}.</h6>
+            <h6 class="post-info">Un article de {{ item.name }}</h6>
             <b-card-text class="post-text">{{ item.post_text }}</b-card-text>
             <router-link :to="{name: 'Article', params: {id: item.id}}" class="post-btn btn stretched-link">VOIR L'ARTICLE</router-link>
         </b-card>

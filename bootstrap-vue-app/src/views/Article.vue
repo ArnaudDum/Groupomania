@@ -16,14 +16,14 @@
               <b-btn @click.prevent="deletePost" v-if="this.isAuthor == true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER</b-btn>
               
             </div>
-            <h3>Publié par {{ this.post.name }}, le {{ this.post.post_date }}.</h3>
+            <h3>Publié par {{ this.post.name }}</h3>
             <p>{{ this.post.post_text }}</p>
           </div>
           <div>
             <h3 id="commentTitle" class="ml-3 ml-md-5 py-2 py-md-3">Commentaires</h3>
               <div :key="item.id_comment" v-for="item in comments" class="commentCard p-2 p-md-3 p-lg-4 my-1">
                 <div class="d-flex justify-content-between">
-                  <h5>{{ item.comment_name }}, le {{ item.comment_date }}</h5>
+                  <h5>{{ item.comment_name }}</h5>
                   <b-btn @click.prevent="deleteComment(item.id_comment)" v-if="item.isCommentAuthor == true" class="delete-com-btn"><i class="fas fa-trash-alt"></i></b-btn>
                 </div>
                 <p>{{ item.comment_text }}</p>
