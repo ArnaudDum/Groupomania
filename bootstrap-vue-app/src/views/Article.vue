@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between">
               <h1>{{ this.post.post_title }}</h1>
 
-              <b-btn v-if="this.isAuthor == true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER</b-btn>
+              <b-btn @click.prevent="deletePost" v-if="this.isAuthor == true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER</b-btn>
               
             </div>
             <h3>Publié par {{ this.post.name }}, le {{ this.post.post_date }}.</h3>
@@ -24,7 +24,7 @@
               <div :key="item.id_comment" v-for="item in comments" class="commentCard p-2 p-md-3 p-lg-4 my-1">
                 <div class="d-flex justify-content-between">
                   <h5>{{ item.comment_name }}, le {{ item.comment_date }}</h5>
-                  <b-btn v-if="item.isCommentAuthor == true" id="delete-com-btn"><i class="fas fa-trash-alt"></i></b-btn>
+                  <b-btn @click.prevent="deleteComment(item.id_comment)" v-if="item.isCommentAuthor == true" class="delete-com-btn"><i class="fas fa-trash-alt"></i></b-btn>
                 </div>
                 <p>{{ item.comment_text }}</p>
               </div>
@@ -69,7 +69,6 @@ export default {
         comment: null,
         message: null,
         isAuthor: null,
-        isCommentAuthor: null,
       }
     },
     methods: {
@@ -83,7 +82,19 @@ export default {
         axios.post('http://localhost:3000/api/posts/comment', commentObj)
           .then(response => (this.message = response.data.message))
           .then(() => window.location.href=("http://localhost:8080/article/" + this.pageId))
-      }
+      },
+      deleteComment(goodid) {
+        axios.delete('http://localhost:3000/api/posts/comment/' + goodid)
+          .then(() => {
+            window.location.href=("http://localhost:8080/article/" + this.pageId)
+          })
+      },
+      deletePost() {
+        axios.delete('http://localhost:3000/api/posts/' + this.pageId)
+          .then(() => {
+            window.location.href="http://localhost:8080/actualites"
+          })
+      },
     },
     mounted() {
       axios.get('http://localhost:3000/api/posts/' + this.pageId)
@@ -153,7 +164,7 @@ export default {
 .commentCard {
   background: $blue-light-2;
   width: 100%;
-  #delete-com-btn {
+  .delete-com-btn {
     color: #fff;
     font-size: 0.8rem;
     letter-spacing: 0.3rem;

@@ -34,13 +34,13 @@ exports.comment = (req, res, next) => {
 };
 
 exports.deleteOnePost = (req, res, next) => {
-    db.query('DELETE FROM posts WHERE id=?', [req.params.id], (error, result) => {
+    db.query('DELETE FROM posts WHERE id=?', [req.params.id], (err, result) => {
         res.status(200).json({ message: 'PUBLICATION SUPPRIMÉE !' });
-    })
+    });
 };
 
 exports.deleteOneComment = (req, res, next) => {
-    db.query('DELETE FROM comments WHERE id=?', [req.params.id], (error, result) => {
-        res.status(200).json({ message: 'COMMENTAIRE SUPPRIMÉE !' });
+    db.query('DELETE FROM comments WHERE id=?', [req.params.id], (err, result) => {
+        res.status(200).json({ message: 'COMMENTAIRE SUPPRIMÉ !' });
     })
 };

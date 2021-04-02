@@ -14,6 +14,6 @@ router.delete('/:id', postControls.deleteOnePost);  // DELETE une publication de
 
 router.post('/comment', postControls.comment);  //  POST un commentaire sur une publication
 
-router.delete('/:id/comment/:id', postControls.deleteOneComment);  // DELETE un commentaire de l'utilisateur
+router.delete('/comment/:id', postControls.deleteOneComment);  // DELETE un commentaire de l'utilisateur
 
 module.exports = router;
