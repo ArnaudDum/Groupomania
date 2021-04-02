@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between">
               <h1>{{ this.post.post_title }}</h1>
 
-              <b-btn v-if="this.post.id_user=this.userId" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER CET ARTICLE</b-btn>
+              <b-btn v-if="this.isAuthor == true" id="delete-btn" class="px-3"><i class="fas fa-trash-alt"></i>SUPPRIMER</b-btn>
               
             </div>
             <h3>Publié par {{ this.post.name }}, le {{ this.post.post_date }}.</h3>
@@ -22,7 +22,10 @@
           <div>
             <h3 id="commentTitle" class="ml-3 ml-md-5 py-2 py-md-3">Commentaires</h3>
               <div :key="item.id_comment" v-for="item in comments" class="commentCard p-2 p-md-3 p-lg-4 my-1">
-                <h5>{{ item.comment_name }}, le {{ item.comment_date }}</h5>
+                <div class="d-flex justify-content-between">
+                  <h5>{{ item.comment_name }}, le {{ item.comment_date }}</h5>
+                  <b-btn v-if="item.isCommentAuthor == true" id="delete-com-btn"><i class="fas fa-trash-alt"></i></b-btn>
+                </div>
                 <p>{{ item.comment_text }}</p>
               </div>
           </div>
@@ -61,9 +64,12 @@ export default {
         comments: [],
         pageId: this.$route.params.id,
         userId: null,
+        postUserId: null,
+        commentUserId: null,
         comment: null,
         message: null,
-        isAuthor: false,
+        isAuthor: null,
+        isCommentAuthor: null,
       }
     },
     methods: {
@@ -79,21 +85,24 @@ export default {
           .then(() => window.location.href=("http://localhost:8080/article/" + this.pageId))
       }
     },
-    beforeCreate() {
-      this.userId = sessionStorage.getItem('userId');
-    },
     mounted() {
       axios.get('http://localhost:3000/api/posts/' + this.pageId)
         .then(response => {
           let postObj = {
             id: response.data[0].id,
-            id_user: response.data[0].id_user,
             post_title: response.data[0].post_title,
             post_text: response.data[0].post_text,
             name: response.data[0].name,
             post_date: response.data[0].post_date,
           }
           this.post = postObj
+          this.postUserId = response.data[0].id_user
+          this.userId = sessionStorage.getItem('userId')
+          if(this.userId == this.postUserId) {
+            this.isAuthor = true
+          } else {
+            this.isAuthor = false
+          }
         })
       axios.get('http://localhost:3000/api/posts/' + this.pageId +'/comments')
         .then(response => {
@@ -104,6 +113,13 @@ export default {
               comment_name: element.name,
               comment_text: element.comment_text,
               comment_date: element.comment_date,
+              isCommentAuthor: null,
+            }
+            this.userId = sessionStorage.getItem('userId')
+            if(this.userId == element.id_user) {
+              commentObj.isCommentAuthor = true
+            } else {
+              commentObj.isCommentAuthor = false
             }
             this.comments.push(commentObj)
           }
@@ -125,6 +141,7 @@ export default {
     font-size: 0.8rem;
     letter-spacing: 0.3rem;
     background: #B22222;
+    border: none;
     i {
       margin-right: 1rem;
     }
@@ -136,6 +153,16 @@ export default {
 .commentCard {
   background: $blue-light-2;
   width: 100%;
+  #delete-com-btn {
+    color: #fff;
+    font-size: 0.8rem;
+    letter-spacing: 0.3rem;
+    background: #B22222;
+    border: none;
+    i {
+      margin-left: 0.2rem;
+    }
+  }
   p {
     word-wrap: break-word;
   }
