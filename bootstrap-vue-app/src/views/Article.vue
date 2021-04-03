@@ -73,24 +73,32 @@ export default {
     },
     methods: {
       sendComment() {
+        let token = sessionStorage.getItem('token')
+        let auth = {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }
         let commentObj = {
           postId: this.pageId,
           userId: sessionStorage.getItem('userId'),
           name: sessionStorage.getItem('user'),
           text: this.comment,
         }
-        axios.post('http://localhost:3000/api/posts/comment', commentObj)
+        axios.post('http://localhost:3000/api/posts/comment', commentObj, auth)
           .then(response => (this.message = response.data.message))
           .then(() => window.location.href=("http://localhost:8080/article/" + this.pageId))
       },
       deleteComment(goodid) {
-        axios.delete('http://localhost:3000/api/posts/comment/' + goodid)
+        let token = sessionStorage.getItem('token')
+        axios.delete('http://localhost:3000/api/posts/comment/' + goodid, {data: {userId: this.userId}, headers: {'Authorization': 'Bearer '+token}})
           .then(() => {
             window.location.href=("http://localhost:8080/article/" + this.pageId)
           })
       },
       deletePost() {
-        axios.delete('http://localhost:3000/api/posts/' + this.pageId)
+        let token = sessionStorage.getItem('token')
+        axios.delete('http://localhost:3000/api/posts/' + this.pageId, {data: {userId: this.userId}, headers: {'Authorization': 'Bearer '+token}})
           .then(() => {
             window.location.href="http://localhost:8080/actualites"
           })

@@ -64,13 +64,19 @@ export default {
     },
     methods: {
       sendPost() {
+        let token = sessionStorage.getItem('token')
+        let auth = {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }
         let postObj = {
           title: this.title,
           text: this.text,
           userId: this.userId,
           name: this.name,
         }
-        axios.post('http://localhost:3000/api/posts/', postObj)
+        axios.post('http://localhost:3000/api/posts/', postObj, auth)
           .then(response => (this.message = response.data.message))
       }
     },

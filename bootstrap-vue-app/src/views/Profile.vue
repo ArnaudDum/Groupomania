@@ -61,13 +61,20 @@ export default {
     },
     methods: {
       deleteUser() {
-        axios.delete('http://localhost:3000/api/users/delete/' + this.user.userId)
+        let token = sessionStorage.getItem('token')
+        axios.delete('http://localhost:3000/api/users/delete/' + this.user.userId, {data: {userId: this.userId}, headers: {'Authorization': 'Bearer '+token}})
           .then(() => {
             window.location.href="http://localhost:8080/"
             sessionStorage.clear()
           })
       },
       updateUser() {
+        let token = sessionStorage.getItem('token')
+        let auth = {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }
         let check1 = document.getElementById('passwordInput-1').value;
         let check2 = document.getElementById('passwordInput-2').value;
         if(check1 === check2) {
@@ -76,7 +83,7 @@ export default {
             email: document.getElementById('emailInput').value,
             password: check2,
           }
-          axios.put(('http://localhost:3000/api/users/infos/' + this.user.userId), updateObj)
+          axios.put(('http://localhost:3000/api/users/infos/' + this.user.userId), updateObj, auth)
         }
       }
     },
