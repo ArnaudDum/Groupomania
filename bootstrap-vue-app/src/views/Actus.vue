@@ -3,7 +3,7 @@
       
       <Nav/>
 
-      <b-row>
+      <b-row id="main">
         <b-col id="col1" class="col-12 col-md-2">
           <h1 class="h2 mt-4">Voici les dernières publications</h1>
           <p class="mt-3">Vous pouvez réagir et commenter les publications de vos collègues</p>
@@ -40,5 +40,10 @@ export default {
 #col1 {
   color: white;
   background: #1B2D4A;
+}
+@media (min-width: 1440px) {
+  #main {
+    min-height: 90vh;
+  } 
 }
 </style>

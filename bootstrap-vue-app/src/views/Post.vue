@@ -3,7 +3,7 @@
 
       <Nav/>
 
-      <b-row>
+      <b-row id="main">
         <b-col id="post-col-1" class="col-12 col-md-2">
           <h2 class="my-3 my-md-5">Vous pouvez poster un article</h2>
           <p class="my-3 my-md-5">Postez un article, vos collègues le verront apparaître dans leur fil d'actualités.</p>
@@ -108,5 +108,9 @@ export default {
     letter-spacing: 0.2rem;
   }
 }
-
+@media (min-width: 1440px) {
+  #main {
+    min-height: 90vh;
+  }
+}
 </style>
