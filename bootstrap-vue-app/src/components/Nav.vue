@@ -18,6 +18,7 @@ export default {
     name: 'Nav',
     methods: {
         clearSession() {
+            alert('Au revoir !')
             sessionStorage.clear()
         }
     }
