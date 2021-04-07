@@ -12,6 +12,9 @@
           
                 <b-card v-if="showSignupForm" id="signup-form" title="Inscription" class="form-card shadow-lg">
                   <b-card-body>
+                    <div v-if="valid == false">
+                      <p>Mot de passe invalide. Votre mot de passe doit contenir au moins 8 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre</p>
+                    </div>
                     <b-form
                       class="forms text-center"
                       @submit.prevent="sendSignupForm">
@@ -97,7 +100,7 @@ export default {
       showSignupForm: false,
       showLoginForm: false,
       signupFormSent: false,
-      message: null,
+      valid: null,
       signup: {
         signupName: null,
         signupEmail: null,
@@ -111,7 +114,15 @@ export default {
   },
   methods: {
     sendSignupForm() {
-      let signupDatas = {
+      function validPassword(value) {
+        if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)) {
+            return true;
+        } else {
+            return false;
+        }
+      }
+      if (validPassword(this.signup.signupPassword) == true) {
+        let signupDatas = {
         name: this.signup.signupName,
         email: this.signup.signupEmail,
         password: this.signup.signupPassword  
@@ -122,6 +133,9 @@ export default {
           this.showLoginForm = true;
           this.showSignupForm = false;
         })
+      } else {
+        this.valid = false;
+      }
     },
     sendLoginForm() {
       let loginDatas = {

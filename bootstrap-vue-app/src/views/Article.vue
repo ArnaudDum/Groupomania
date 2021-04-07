@@ -116,7 +116,7 @@ export default {
           }
           this.post = postObj
           this.postUserId = response.data[0].id_user
-          this.userId = sessionStorage.getItem('userId')
+          this.userId = localStorage.getItem('userId')
           if(this.userId == this.postUserId) {
             this.isAuthor = true
           } else {
@@ -134,7 +134,7 @@ export default {
               comment_date: element.comment_date,
               isCommentAuthor: null,
             }
-            this.userId = sessionStorage.getItem('userId')
+            this.userId = localStorage.getItem('userId')
             if(this.userId == element.id_user) {
               commentObj.isCommentAuthor = true
             } else {
