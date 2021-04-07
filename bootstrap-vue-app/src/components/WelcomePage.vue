@@ -97,6 +97,7 @@ export default {
       showSignupForm: false,
       showLoginForm: false,
       signupFormSent: false,
+      message: null,
       signup: {
         signupName: null,
         signupEmail: null,
