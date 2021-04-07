@@ -43,4 +43,6 @@ Pour la partie frontend:
 - exécuter la commande: `npm run serve`
 - sur votre navigateur, se rendre à l'adresse http://localhost:8080
 
+ATTENTION: la base de données est vide. Elle se remplira au fur et à mesure de vos ajouts.
+
 Vous pouvez maintenant utiliser l'application Groupomania !
