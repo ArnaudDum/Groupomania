@@ -18,7 +18,7 @@ Le dossier bootstrap-vue-app contient une application développé avec Vue.js.
 
 Le dossier backend a été développé avec Node.js et une base de données MySQL.
 
-## 3 - Installations
+## 3 - Installation
 
 ### Prérequis
 
