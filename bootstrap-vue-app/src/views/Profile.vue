@@ -10,6 +10,9 @@
       </b-col>
       <b-col id="profile-col-2" class="col-12 col-md-10 mx-auto px-2 px-md-5 my-5">
         <div id="profil-area" class="p-3 p-md-5">
+          <div v-if="updatedMsg !== null">
+            <p>{{ updatedMsg }}</p>
+          </div>
           <h1 class="my-3 my-md-5">Mon profil</h1>
           <b-form class="px-lg-5">
             <b-form-group class="px-lg-5">
@@ -56,7 +59,8 @@ export default {
         user: {
           profil: [],
           userId: '',
-        }
+        },
+        updatedMsg: null,
       }
     },
     methods: {
@@ -84,6 +88,8 @@ export default {
             password: check2,
           }
           axios.put(('http://localhost:3000/api/users/infos/' + this.user.userId), updateObj, auth)
+            .then(() => this.updatedMsg = 'votre profil est à jour')
+            .catch(() => this.updatedMsg = 'Une erreur est survenue lors de votre requête')
         }
       }
     },
@@ -122,6 +128,7 @@ export default {
   .profil-btn {
     background: #C15960;
     letter-spacing: 0.2rem;
+    border: none;
     i {
       margin-right: 1rem;
     }

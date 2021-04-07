@@ -96,9 +96,9 @@ export default {
 #post-col-2 {
   #pop-up {
     color: #fff;
-    background: #149414;
+    background: #87c29f;
     letter-spacing: 0.2rem;
-    border: none;
+    border: 2px solid white;
   }
   #post-area {
     background: $blue-light-2;
@@ -106,6 +106,7 @@ export default {
   #post-btn {
     background: #C15960;
     letter-spacing: 0.2rem;
+    border: none;
   }
 }
 @media (min-width: 1440px) {

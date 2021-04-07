@@ -4,14 +4,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const userRequest = require('../models/users.js');
 
-function validPassword(value) {
-    if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
