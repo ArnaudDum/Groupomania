@@ -130,9 +130,9 @@ export default {
       }
       axios.post('http://localhost:3000/api/users/login', loginDatas)
         .then(response => {
-            sessionStorage.setItem('userId', response.data.userId)
-            sessionStorage.setItem('token', response.data.token)
-            sessionStorage.setItem('user', response.data.user)
+            localStorage.setItem('userId', response.data.userId)
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('user', response.data.user)
             document.location.href="http://localhost:8080/actualites"
         })
     }

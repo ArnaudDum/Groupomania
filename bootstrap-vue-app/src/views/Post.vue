@@ -64,7 +64,7 @@ export default {
     },
     methods: {
       sendPost() {
-        let token = sessionStorage.getItem('token')
+        let token = localStorage.getItem('token')
         let auth = {
           headers: {
             Authorization: 'Bearer ' + token
@@ -81,8 +81,8 @@ export default {
       }
     },
     created() {
-      this.userId = sessionStorage.getItem('userId');
-      this.name = sessionStorage.getItem('user');
+      this.userId = localStorage.getItem('userId');
+      this.name = localStorage.getItem('user');
     }
 }
 </script>

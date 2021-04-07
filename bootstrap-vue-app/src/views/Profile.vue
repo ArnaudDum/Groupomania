@@ -61,15 +61,15 @@ export default {
     },
     methods: {
       deleteUser() {
-        let token = sessionStorage.getItem('token')
+        let token = localStorage.getItem('token')
         axios.delete('http://localhost:3000/api/users/delete/' + this.user.userId, {data: {userId: this.userId}, headers: {'Authorization': 'Bearer '+token}})
           .then(() => {
             window.location.href="http://localhost:8080/"
-            sessionStorage.clear()
+            localStorage.clear()
           })
       },
       updateUser() {
-        let token = sessionStorage.getItem('token')
+        let token = localStorage.getItem('token')
         let auth = {
           headers: {
             Authorization: 'Bearer ' + token
@@ -88,7 +88,7 @@ export default {
       }
     },
     created() {
-      return this.user.userId = sessionStorage.getItem('userId')
+      return this.user.userId = localStorage.getItem('userId')
     },
     beforeMount() {
       axios.get('http://localhost:3000/api/users/infos/' + this.user.userId)
