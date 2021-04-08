@@ -12,7 +12,14 @@ const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: (to, from, next) => {
+      if(confirm('Vous nous quittez déjà?')) {
+        return next()
+      } else {
+        return next(false)
+      }
+    }
   },
   {
     path: '/actualites',
