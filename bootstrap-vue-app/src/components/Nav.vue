@@ -16,11 +16,6 @@
 <script>
 export default {
     name: 'Nav',
-    //methods: {
-    //    clearSession() {
-    //        localStorage.clear()
-    //    }
-   // }
 }
 </script>
 
