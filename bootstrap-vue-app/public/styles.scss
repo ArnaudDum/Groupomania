@@ -10,5 +10,6 @@ $red: #C15960;
 $bg-general: linear-gradient(115deg, $blue-dark, $red);
 $bg-card: linear-gradient(-115deg, $blue-dark, 10%, $red);
 $bg-btn: linear-gradient(-115deg, $blue-dark, 60%, $red);
+$red-btn: darken(#C15960, 15%);
 
 // COMPONENTS

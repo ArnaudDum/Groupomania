@@ -126,7 +126,7 @@ export default {
     background: $blue-light-2;
   }
   .profil-btn {
-    background: #C15960;
+    background: $red-btn;
     letter-spacing: 0.2rem;
     border: none;
     i {

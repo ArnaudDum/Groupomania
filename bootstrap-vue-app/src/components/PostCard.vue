@@ -52,7 +52,7 @@ export default {
         position: absolute;
         bottom: 20px;
         color: white;
-        background: $red;
+        background: $red-btn;
         letter-spacing: 0.2rem;
     }
 }

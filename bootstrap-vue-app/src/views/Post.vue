@@ -104,7 +104,7 @@ export default {
     background: $blue-light-2;
   }
   #post-btn {
-    background: #C15960;
+    background: $red-btn;
     letter-spacing: 0.2rem;
     border: none;
   }

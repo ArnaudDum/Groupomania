@@ -1,4 +1,4 @@
-exports.allPostsRequest = 'SELECT * FROM posts ORDER BY post_date ASC';
+exports.allPostsRequest = 'SELECT * FROM posts ORDER BY post_date DESC';
 
 exports.onePostRequest = 'SELECT * FROM posts WHERE id=?';
 
