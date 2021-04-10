@@ -30,8 +30,7 @@ exports.getAllComments = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-    let request = 'INSERT INTO posts (id_user, name, post_title, post_text) VALUES ("' + req.body.userId + '", "' + req.body.name + '", "' + req.body.title + '", "' + req.body.text + '")';
-    db.query(request, (error, result) => {
+    db.query(postRequest.createPost, [req.body.userId, req.body.name, req.body.title, req.body.text], (error, result) => {
         res.status(201).json({ message: 'ARTICLE PUBLIÉ !' });
         if(error) {
             res.status(400).json({ message: "Echec de l'envoi de l'article"});
@@ -40,8 +39,7 @@ exports.createPost = (req, res, next) => {
 };
 
 exports.comment = (req, res, next) => {
-    let request = 'INSERT INTO comments (id_post, id_user, name, comment_text) VALUES ("'+req.body.postId+'", "'+req.body.userId+'", "'+req.body.name+'", "'+req.body.text+'")';
-    db.query(request, (error, result) => {
+    db.query(postRequest.createComment, [req.body.postId, req.body.userId, req.body.name, req.body.text], (error, result) => {
         res.status(201).json({ message: 'COMMENTAIRE PUBLIÉ !' });
         if(error) {
             res.status(400).json({ message: "Echec de l'envoi du commentaire"});
