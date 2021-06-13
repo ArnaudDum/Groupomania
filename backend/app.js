@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const mysql = require('mysql');
 const db = require('./database/db.js');
 
 const postRoutes = require('./routes/postRoutes.js');
