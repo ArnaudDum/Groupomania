@@ -42,10 +42,19 @@
                         <div>
                           <span><i class="fas fa-key"></i></span>
                         </div>
+
+                        <b-form-input
+                          v-model="signup.signupPassword"
+                          type="password"
+                          placeholder="Mot de passe"
+                          aria-required>
+                        </b-form-input>
+
+
                         <b-form-input
                           type="password"
-                          v-model="signup.signupPassword"
-                          placeholder="Mot de passe"
+                          v-model="signup.signupPasswordCheck"
+                          placeholder="Confirmez le mot de passe"
                           aria-required>
                         </b-form-input>
                       </b-form-group>
@@ -104,7 +113,8 @@ export default {
       signup: {
         signupName: null,
         signupEmail: null,
-        signupPassword: null
+        signupPassword: null,
+        signupPasswordCheck: null,
       },
       login: {
         loginEmail: null,
@@ -126,13 +136,15 @@ export default {
         name: this.signup.signupName,
         email: this.signup.signupEmail,
         password: this.signup.signupPassword  
-      }
-      axios.post('http://localhost:3000/api/users/signup', signupDatas)
-        .then(() => {
-          this.signupFormSent = true;
-          this.showLoginForm = true;
-          this.showSignupForm = false;
-        })
+        }
+        if (this.signupPassword == this.signupPasswordCheck) {
+          axios.post('http://localhost:3000/api/users/signup', signupDatas)
+            .then(() => {
+              this.signupFormSent = true;
+              this.showLoginForm = true;
+              this.showSignupForm = false;
+          })
+        }
       } else {
         this.valid = false;
       }

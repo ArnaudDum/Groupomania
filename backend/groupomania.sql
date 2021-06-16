@@ -21,47 +21,6 @@ SET time_zone = "+00:00";
 -- Base de données : `groupomania`
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `post_id` smallint(6) NOT NULL,
-  `user_id` smallint(6) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `comment_text` text NOT NULL,
-  `comment_date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `posts`
---
-
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` smallint(6) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `post_title` varchar(100) NOT NULL,
-  `post_text` text NOT NULL,
-  `post_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `posts`
---
-
-INSERT INTO `posts` (`id`, `user_id`, `name`, `post_title`, `post_text`, `post_date`) VALUES
-(1, 1, 'TestMan', 'TEST THE TITLE', 'I\'m just testing the API connection with the database !', '2021-03-20'),
-(2, 1, 'TestMan', 'TEST THE TITLE', 'I\'m just testing the API connection with the database !', '2021-03-20');
 
 -- --------------------------------------------------------
 
@@ -87,6 +46,54 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
 (2, 'TestMan', 'test@test.te', 'test123'),
 (3, 'TestMan', 'test@test.te', 'test123');
 COMMIT;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` smallint(6) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `post_title` varchar(100) NOT NULL,
+  `post_text` text NOT NULL,
+  `post_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+  CONSTRAINT FK_Posts_Users FOREIGN KEY (`user_id`) REFERENCES users(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `name`, `post_title`, `post_text`, `post_date`) VALUES
+(1, 1, 'TestMan', 'TEST THE TITLE', 'I\'m just testing the API connection with the database !', '2021-03-20'),
+(2, 1, 'TestMan', 'TEST THE TITLE', 'I\'m just testing the API connection with the database !', '2021-03-20');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comments`
+--
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `post_id` smallint(6) NOT NULL,
+  `user_id` smallint(6) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `comment_text` text NOT NULL,
+  `comment_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+  CONSTRAINT FK_Comments_Users FOREIGN KEY (`user_id`) REFERENCES users(`id`)
+  CONSTRAINT FK_Comments_Posts FOREIGN KEY (`post_id`) REFERENCES posts(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

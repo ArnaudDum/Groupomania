@@ -22,7 +22,8 @@ Le dossier backend a été développé avec Node.js et une base de données MySQ
 
 ### Prérequis
 
-Vous devez avois Node et `npm` installés en local sur votre machine.
+Vous devez avoir Node et `npm` installés en local sur votre machine.
+La version de MySQL est : v5.0.2
 
 ### Instructions
 
